@@ -19,24 +19,24 @@ import c "core:c"
 
 when ODIN_OS == .Linux {
     when #config(shared, true) {
-        foreign import lib "librustls.so" 
+        foreign import lib "librustls_ffi.so" 
     } else {
-        foreign import lib "librustls.a"
+        foreign import lib "librustls_ffi.a"
     }
 } else when ODIN_OS == .Windows  {
     when #config(shared, true) {
-        foreign import lib "librustls.dll" 
+        foreign import lib "librustls_ffi.dll" 
     } else {
-        foreign import lib "librustls.lib"
+        foreign import lib "librustls_ffi.lib"
     }
 } else when ODIN_OS == .Darwin {
     when #config(shared, true) {
-        foreign import lib "librustls.dylib" 
+        foreign import lib "librustls_ffi.dylib" 
     } else {
-        foreign import lib "librustls.a"
+        foreign import lib "librustls_ffi.a"
     }
 } else {
-	foreign import lib "system:rustls"
+	foreign import lib "system:rustls_ffi"
 }
 
 rustls_verify_server_cert_user_data :: rawptr
